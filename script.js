@@ -7,13 +7,16 @@ function computerPlay() {
     else (value = 'Scissors');
 }
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === 'Rock') {
+    let format=playerSelection.toLowerCase();
+    format= format.charAt(0).toUpperCase()+format.slice(1);
+    console.log(format);
+    if (format === 'Rock') {
         if (computerSelection === 'Paper') console.log("You lose!");
         else if (computerSelection === 'Scissors') console.log("You win!");
         else console.log("It's a tie!")
         console.log(computerSelection);
     }
-    else if (playerSelection === 'Paper') {
+    else if (format === 'Paper') {
         if (computerSelection === 'Scissors') console.log("You lose!");
         else if (computerSelection === 'Rock') console.log("You win!");
         else console.log("It's a tie!")
@@ -28,6 +31,7 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
+
 function game() {
     for (let i = 1; i <= 5; i++) {
         let choice = prompt('Enter value:');
