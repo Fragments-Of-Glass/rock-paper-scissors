@@ -5,6 +5,7 @@ let computerVictory = 0;
 let totalRounds = 0;
 const current = document.querySelector('.currentRound');
 const container = document.querySelector('.results');
+document.getElementById("reset").style.display = "none";
 function counter(victor) {
     if (victor != 'Computer' && victor != 'Player') {
         current.textContent = `It's a tie!`;
@@ -29,9 +30,18 @@ function counter(victor) {
         container.textContent = `Player has won ${(playerVictory)} to ${(computerVictory)},
          in ${(totalRounds)} rounds`;
 
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissors").disabled = true;
+        document.getElementById("reset").style.display = "block";
     }
     if (computerVictory === 5) {
+
         container.textContent = `Computer has won ${(computerVictory)} to ${(playerVictory)}`;
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissors").disabled = true;
+        document.getElementById("reset").style.display = "block";
     }
 
 }
@@ -80,7 +90,10 @@ function playRound(playerSelection, computerSelection) {
         else counter();
     }
 }
-
+const resetGame = document.querySelector('#reset');
+resetGame.addEventListener('click', () => {
+    window.location.reload();
+})
 function game() {
     const btnRock = document.querySelector('#rock');
     btnRock.addEventListener('click', () => {

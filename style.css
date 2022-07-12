@@ -1,11 +1,14 @@
 body{
     display:flex;
     background-color: gray;
-     justify-content: center;
-     align-self: center;
-     margin: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 .buttons{
     display: flex;
     gap:20px;
+   flex: auto;
+    
 }
