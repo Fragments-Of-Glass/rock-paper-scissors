@@ -2,36 +2,37 @@ let value;
 let choice;
 let playerVictory = 0;
 let computerVictory = 0;
-const current=document.querySelector('.currentRound');
+let totalRounds = 0;
+const current = document.querySelector('.currentRound');
 const container = document.querySelector('.results');
 function counter(victor) {
-
-    console.log(victor);
-    if(victor!='Computer'&&victor!='Player'){
-        current.textContent=`It's a tie!`;
+    if (victor != 'Computer' && victor != 'Player') {
+        current.textContent = `It's a tie!`;
+        totalRounds++;
     }
     else if (victor === 'Computer') {
         computerVictory++;
-        current.textContent='Computer wins!';
+        current.textContent = `Computer chose ${(value)}, computer wins!`;
         console.log(computerVictory);
+        totalRounds++;
     }
-    else if(victor==='Player'){
+    else if (victor === 'Player') {
         playerVictory++;
-        current.textContent='Player wins!';
+        current.textContent = `Computer chose ${(value)}, you win!`;
         console.log(playerVictory);
+        totalRounds++;
     }
-   
-    container.textContent = `Player has won ${(playerVictory)} times, and computer has won ${(computerVictory)} times`;
+
+    container.textContent = `Player has won ${(playerVictory)} times,
+     and computer has won ${(computerVictory)} times`;
     if (playerVictory === 5) {
-        container.textContent = `Player has won ${(playerVictory)} to ${(computerVictory)}`;
-        return;
-        
+        container.textContent = `Player has won ${(playerVictory)} to ${(computerVictory)},
+         in ${(totalRounds)} rounds`;
+
     }
     if (computerVictory === 5) {
         container.textContent = `Computer has won ${(computerVictory)} to ${(playerVictory)}`;
-      
     }
-    
 
 }
 function computerPlay() {
@@ -46,7 +47,6 @@ function playRound(playerSelection, computerSelection) {
 
     if (format === 'Rock') {
         if (computerSelection === 'Paper') {
-            console.log("You lose!");
             counter('Computer');
         }
         else if (computerSelection === 'Scissors') {
@@ -54,21 +54,19 @@ function playRound(playerSelection, computerSelection) {
             counter('Player');
         }
         else counter();
-        
-        console.log(computerSelection);
+
+
     }
     else if (format === 'Paper') {
         if (computerSelection === 'Scissors') {
-            console.log("You lose!");
             counter('Computer');
         }
         else if (computerSelection === 'Rock') {
-            console.log("You win!");
             counter('Player');
         }
         else counter();
-        
-        console.log(computerSelection);
+
+
     }
     else {
         if (computerSelection === 'Rock') {
@@ -80,11 +78,7 @@ function playRound(playerSelection, computerSelection) {
             counter('Player');
         }
         else counter();
-        
-        console.log(computerSelection);
-
     }
-
 }
 
 function game() {
