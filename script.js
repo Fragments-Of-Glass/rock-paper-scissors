@@ -14,18 +14,21 @@ function counter(victor) {
     else if (victor === 'Computer') {
         computerVictory++;
         current.textContent = `Computer chose ${(value)}, computer wins!`;
-        console.log(computerVictory);
         totalRounds++;
     }
     else if (victor === 'Player') {
         playerVictory++;
         current.textContent = `Computer chose ${(value)}, you win!`;
-        console.log(playerVictory);
         totalRounds++;
     }
-
-    container.textContent = `Player has won ${(playerVictory)} times,
+    {
+        if (computerVictory === 1&&playerVictory!=1) container.textContent = `Player has won ${(playerVictory)} times,
+    and computer has won ${(computerVictory)} time`;
+        else if (playerVictory === 1&&computerVictory!=1) container.textContent = `Player has won ${(playerVictory)} time,
+    and computer has won ${(computerVictory)} times`;
+        else container.textContent = `Player has won ${(playerVictory)} times,
      and computer has won ${(computerVictory)} times`;
+    }
     if (playerVictory === 5) {
         container.textContent = `Player has won ${(playerVictory)} to ${(computerVictory)},
          in ${(totalRounds)} rounds`;
@@ -98,21 +101,18 @@ function game() {
     const btnRock = document.querySelector('#rock');
     btnRock.addEventListener('click', () => {
         choice = 'rock';
-        console.log(choice);
         computerPlay();
         playRound(choice, value);
     });
     const btnPaper = document.querySelector('#paper');
     btnPaper.addEventListener('click', () => {
         choice = 'paper';
-        console.log(choice);
         computerPlay();
         playRound(choice, value);
     });
     const btnScissors = document.querySelector('#scissors');
     btnScissors.addEventListener('click', () => {
         choice = 'scissors';
-        console.log(choice);
         computerPlay();
         playRound(choice, value);
     });
